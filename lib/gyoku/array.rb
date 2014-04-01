@@ -21,6 +21,7 @@ module Gyoku
             when ::Hash       then xml.tag!(key, attrs) { xml << Hash.to_xml(item, options) }
             when ::Array      then xml.tag!(key, attrs) { xml << Array.to_xml(item, NESTED_ELEMENT_NAME) }
             when NilClass     then xml.tag!(key, "xsi:nil" => "true")
+            when item.respond_to?(:to_xml) then xml << item.to_xml({:root => false})
             else              xml.tag!(key, attrs) { xml << XMLValue.create(item, escape_xml) }
           end
         end
