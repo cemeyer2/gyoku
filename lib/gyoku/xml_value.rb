@@ -27,7 +27,7 @@ module Gyoku
         elsif object.respond_to?(:to_datetime)
           create object.to_datetime
         elsif object.respond_to?(:to_xml)
-          object.to_xml
+          object.to_xml({:noroot => true})
         elsif object.respond_to?(:call)
           create object.call
         else
