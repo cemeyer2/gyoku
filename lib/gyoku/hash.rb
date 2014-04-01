@@ -20,7 +20,7 @@ module Gyoku
           when ::Hash === value   then xml.tag!(xml_key, attributes) { xml << Hash.to_xml(value, options) }
           when self_closing       then xml.tag!(xml_key, attributes)
           when NilClass === value then xml.tag!(xml_key, "xsi:nil" => "true")
-          when value.respond_to?(:to_xml) then xml << value.to_xml
+          when value.respond_to?(:to_xml) then xml << value.to_xml({:root => false})
           else                         xml.tag!(xml_key, attributes) { xml << XMLValue.create(value, escape_xml) }
         end
       end
