@@ -12,8 +12,12 @@ module Gyoku
   def self.xml(hash, options = {})
     if hash.is_a? ::Array
       Array.to_xml hash.dup, options
-    else
+    elsif hash.is_a? ::Hash
       Hash.to_xml hash.dup, options
+    elsif hash.respond_to?(:to_xml)
+      hash.to_xml
+    else
+      hash.to_s
     end
   end
 
