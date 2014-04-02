@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "gyoku"
   s.license = "MIT"
 
-  s.add_dependency "builder", ">= 2.1.2"
+  s.add_dependency "builder"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
