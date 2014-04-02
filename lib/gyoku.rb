@@ -11,7 +11,9 @@ module Gyoku
   # Translates a given +hash+ with +options+ to XML.
   def self.xml(hash, options = {})
     if hash.is_a? ::Array
-      Array.to_xml hash.dup, options
+      key = options.delete(:key)
+      key = "item" if key.nil?
+      Array.to_xml hash.dup, key, options=options
     elsif hash.is_a? ::Hash
       Hash.to_xml hash.dup, options
     elsif hash.respond_to?(:to_xml)

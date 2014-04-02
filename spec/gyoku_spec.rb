@@ -54,6 +54,16 @@ describe Gyoku do
       Gyoku.xml(hash)
       original_hash.should == hash
     end
+
+    it 'should work' do
+      hash = {:foo =>[ {"answer"=>"test", "csrOnly"=>false, "question"=>"What is your Mother's middle name?"},
+                            {"answer"=>"test", "csrOnly"=>false, "question"=>"What is your Father's middle name?"},
+                            {"answer"=>"test", "csrOnly"=>true, "question"=>"What was the model of your first car?"}]
+      }
+      xml = Gyoku.xml({"securityStuffs" => hash})
+      puts xml
+    end
+
   end
 
 end
